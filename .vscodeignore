@@ -1,0 +1,5 @@
+.vscode/**
+.gitignore
+.yarnrc
+vsc-extension-quickstart.md
+

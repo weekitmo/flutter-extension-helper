@@ -1,0 +1,12 @@
+{
+  "Flutter extensions string": {
+    "prefix": "ets",
+    "description": "Insert a extensions on string",
+    "body": ["extension $1 on String {", "  blank() {}", "}"]
+  },
+  "Flutter extensions num": {
+    "prefix": "etn",
+    "description": "Insert a extensions on num",
+    "body": ["extension $1 on num {", "  double get $2 => this * 1.0;", "}"]
+  }
+}
