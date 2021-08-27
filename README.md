@@ -1,9 +1,12 @@
-![](./images/logo.png)
+<div align=center>
+<img src="./images/logo.png" center style="width:100%;border-radius:16px;"/>
+</div>
+
 ## 该插件计划
 
-- [ ] 提示import extension
+- [ ] 提示 import extension
 - [ ] 代码片段
-- [ ] 命令生成extensions目录
+- [ ] 命令生成 extensions 目录
   ```bash
   lib/extensions
   ├── map_extensions.dart
