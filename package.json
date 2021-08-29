@@ -67,6 +67,30 @@
         "title": "Normalize",
         "category": "Flutter Extension"
       }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "fehMenu",
+          "title": "Flutter pub",
+          "icon": "images/pub.svg"
+        }
+      ]
+    },
+    "views": {
+      "fehMenu": [
+        {
+          "id": "fehMenu.welcome",
+          "visibility": "visible",
+          "name": "Welcome"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "fehMenu.welcome",
+        "contents": "\n [🔥 Pub](command:flutter-extension-helper.pubView) \n [🔧 打开设置](command:flutter-extension-helper.customSetting)\n"
+      }
     ]
   },
   "extensionDependencies": [

@@ -1,4 +1,5 @@
 import * as vscode from "vscode"
+import { commands } from "vscode"
 import { DART_MODE, registerCompletionProvider } from "./completions"
 import { dartCodeExtensionIdentifier } from "./helpers/contants"
 import { isInsideFlutterProject, util } from "./helpers/util"
@@ -9,17 +10,32 @@ import { SnippetCompletionItemProvider } from "./snappet"
 import { StatusBar } from "./statusBar"
 import { scanExtension } from "./scan"
 import path from "./helpers/path"
+import globalState from "./helpers/globalState"
+import { pubView } from "./pubView"
 
 const pluginName = `flutter-extension-helper`
-const commands = {
-  normalize: `${pluginName}.normalize`
+const COMMANDS = {
+  normalize: `${pluginName}.normalize`,
+  pubView: `${pluginName}.pubView`,
+  customSetting: `${pluginName}.customSetting`
 }
 
 export async function activate(context: vscode.ExtensionContext) {
   const rootPath = util.getWorkspace()
+  globalState.isDevelopment = process.env.NODE_ENV === "development"
+  globalState.context = context
+
   process.chdir(rootPath)
-  const disposable = vscode.commands.registerCommand(commands.normalize, () => {
-    vscode.window.showInformationMessage(`[${commands.normalize}] ${rootPath}`)
+  const disposable = commands.registerCommand(COMMANDS.normalize, () => {
+    vscode.window.showInformationMessage(`[${COMMANDS.normalize}] ${rootPath}`)
+  })
+  // register webview
+  commands.registerCommand(COMMANDS.pubView, () => {
+    vscode.window.showInformationMessage(`pubView`)
+    pubView()
+  })
+  commands.registerCommand(COMMANDS.customSetting, () => {
+    vscode.window.showInformationMessage(`customSetting`)
   })
 
   context.subscriptions.push(disposable)
